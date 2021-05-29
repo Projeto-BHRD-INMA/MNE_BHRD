@@ -35,6 +35,8 @@ head(spp.table)
 names(spp.table)
 View(spp.table)
 
+###checking number of species
+unique(spp.table$species)
 
 ## Converting data.frame into a SpatialPointsDataFrame for spatial operations
 ### note that the lon and lat columns are in columns 23 and 22, respectively

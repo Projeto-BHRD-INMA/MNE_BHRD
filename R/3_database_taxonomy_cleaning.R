@@ -10,9 +10,11 @@ library(rocc)
 library(dplyr)
 
 
-data<-read.csv("./data/registros/spp_Gualaxo/5_Gualaxo_occ2.csv", header = T, sep=",", dec=".", encoding="utf-8")
+data<-read.csv("./data/registros/spp_Gualaxo/3_gbif_Gualaxo_amesul.csv", header = T, sep=",", dec=".", encoding="utf-8")
 
-data$spp
+unique(data$species)
+
+data$species
 # Obs: The names of species have a whitespace after them.
 #Let's use str_trim to remove whitespace after the species names
 library(stringr)

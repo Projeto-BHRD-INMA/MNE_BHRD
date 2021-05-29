@@ -32,11 +32,11 @@ pwd <- "xxxx" # your gbif.org password
 email <- "xxx" # your email
 
 #############################################################################
-oc <- read.csv("./data/registros/spp_Gualaxo/spp_gualaxo.csv", sep = ';')
+oc <- read.csv("./data/registros/spp_Gualaxo/1_spp_gualaxo.csv", sep = ';')
 names(oc)
 
 gbif_taxon_keys <-
-  read.csv("./data/registros/spp_Gualaxo/spp_gualaxo.csv", sep = ';') %>% #For an file with a list of spp names
+  read.csv("./data/registros/spp_Gualaxo/1_spp_gualaxo.csv", sep = ';') %>% #For an file with a list of spp names
   pull(spp) %>% #Specify the column from the list
   taxize::get_gbifid_(method="backbone") %>% # match names to the GBIF backbone to get taxonkeys
   imap(~ .x %>% mutate(original_sciname = .y)) %>% # add original name back into data.frame

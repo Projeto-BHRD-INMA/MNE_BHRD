@@ -19,25 +19,34 @@ library(modleR)
 args(do_many)
 ?do_many
 
+#Let's also measure how much time the code below will take 
+#Start the clock!
+start.time <- Sys.time()
+
 for (i in 1:length(data_list)) {
   sp <- species[i]
   do_many(species_name = sp,
           predictors = clim.stack,
           models_dir = "./modelos/modelos_gualaxo",
           png_partitions = TRUE,
-          bioclim = FALSE,
+          bioclim = TRUE,
+          mahal = TRUE,
           maxnet = FALSE,
           maxent = TRUE,
           rf = TRUE,
           svmk = TRUE,
           svme = FALSE,
-          brt = FALSE,
+          brt = TRUE,
           glm = FALSE,
           domain = FALSE,
-          mahal = TRUE,
           equalize = TRUE,
           write_bin_cut = TRUE)
 }
+
+#Stop the clock!
+end.time <- Sys.time()
+
+time.elapsed <- end.time - start.time
 
 ####################### Joining partitions: final_model() #####################
 

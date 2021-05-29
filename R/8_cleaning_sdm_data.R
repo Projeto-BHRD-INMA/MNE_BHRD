@@ -118,6 +118,9 @@ species <- names(data_list)
 args(setup_sdmdata)
 ?setup_sdmdata
 
+#Let's also measure how much time the code below will take 
+#Start the clock!
+start.time <- Sys.time()
 
 for (i in 1:length(data_list)) {
   sp <- species[i]
@@ -134,15 +137,17 @@ for (i in 1:length(data_list)) {
                 buffer_type = "mean",
                 write_buffer = T,
                 png_sdmdata = T,
-                n_back = 5000,
+                n_back = 10000,
                 clean_dupl = T,
                 clean_uni = T,
                 clean_nas = T,
-                geo_filt = F,
-                geo_filt_dist = 10,
-                select_variables = F,
-                sample_proportion = 0.5
+                geo_filt = T,
+                geo_filt_dist = 0.1,
+                select_variables = F
 )
 }
 
+#Stop the clock!
+end.time <- Sys.time()
 
+time.elapsed <- end.time - start.time
