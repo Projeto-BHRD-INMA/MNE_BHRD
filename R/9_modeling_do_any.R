@@ -1,72 +1,30 @@
 ###########################################
-# Teste modleR                            #
-# Step 5: Do Any                          #
-# Especies arvores BHRD                   #
-# Kele Rocha Firmiano & Danielle O Moreira#
+# MODLER                                  #
+# Do Any                                  #
+# Tree species                            #
+#
 ###########################################
 
-# Packages
-#para trabalhar com dados espaciais
-library(sp)
-
-#para trabalhar com raster
-library(raster)
-
-# para trabalhar com o ModleR
-library(modleR)
-
-
-#Objeto criado após a limpeza de dados
-sdmdata_1sp
-#para ver o numero de registros depois da limpeza
-dim(sdmdata_1sp)
-head(sdmdata_1sp)
-
-#Plotar os pontos das ocorrencias no mapa
-library(rgdal) #para trabalhar com shapefile
-shp<- readOGR("./data/shape/amesul.shp") #loading shapefile
-
-plot(shp)
-points(sdmdata_1sp$lon, sdmdata_1sp$lat, col = "red", cex = .1)
-
-
-
-# Loading pca environment data (pca axes, see script "1_variaveis ambientais")
-#clim <- list.files(path="./data/raster/wc5_amsul/pca", ".*.tif$",
-#                   full.names = TRUE)
-
-#clim.stack <- stack(clim) # stack raster
-#plot(clim.stack)  # stack raster
+# It is necessary to run the script #8 Cleaning for sdm_data function
+# List of species is also in script #8
 
 
 ######################### MODELAGEM DO_ANY ####################################
 
-# carregar dados do sdmdata (criado pelo setup_sdmdata no passo anterior), caso precise indicar o caminho
-#sdmdata_Ss<-read.csv("./modelos/Senna spectabilis
-#                     /present/data_setup/sdmdata.csv", header = T, dec=".")
-
-#para ver o arquivo sdmdata_SL
-#sdmdata_SL
-
-####Fitting a model per partition: do_any()
-
 args(do_any)
 ?do_any
 
-modelos <- "./modelos" # file to save models
+modelos <- "./modelos/modelos_gualaxo" # file to save models
 
-do_any(species_name = species[48],
-       #sdmdata = sdmdata_1sp,
-       #occurrences = occs,
-       algo = "maxent",
-       #seed = 512,
-       predictors = clim.stack,
-       #plot_sdmdata = T,
-       png_partitions = T,
+sp <- species[15] #where number indicates the order or the species which we want to run
+
+do_any(species_name = sp,
        models_dir = modelos,
-       #write_png = T,
-       write_bin_cut = F,
-       equalize = T)
+       predictors = clim.stack,
+       algorithm = "maxnet",
+       png_partitions = TRUE,
+       write_bin_cut = TRUE,
+       equalize = TRUE)
 
 #You can explore the list of files created at this phase, for example
 

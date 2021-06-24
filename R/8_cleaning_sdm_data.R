@@ -67,7 +67,7 @@ unique(data$species)
 #table %>% 
 #  count(sp)
 
-#library(dplyr)
+library(dplyr)
 ###To check the frequency of occurrences for each species
 #a <- table(table$sp)%>%sort()
 #View(a)
@@ -151,3 +151,5 @@ for (i in 1:length(data_list)) {
 end.time <- Sys.time()
 
 time.elapsed <- end.time - start.time
+
+time.elapsed

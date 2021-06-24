@@ -1,6 +1,6 @@
 ######################################################
 # ModleR for several species and several algorithms  #
-# Step 8: Do_many                                    #
+# Do_many                                    #
 # Tree species BHRD                                  #
 # Tutorial: https://github.com/Model-R/modleR        #
 ######################################################
@@ -30,13 +30,13 @@ for (i in 1:length(data_list)) {
           models_dir = "./modelos/modelos_gualaxo",
           png_partitions = TRUE,
           bioclim = TRUE,
+          brt = TRUE,
           mahal = TRUE,
-          maxnet = FALSE,
-          maxent = TRUE,
+          maxnet = TRUE,
+          maxent = FALSE,
           rf = TRUE,
           svmk = TRUE,
           svme = FALSE,
-          brt = TRUE,
           glm = FALSE,
           domain = FALSE,
           equalize = TRUE,
@@ -47,24 +47,36 @@ for (i in 1:length(data_list)) {
 end.time <- Sys.time()
 
 time.elapsed <- end.time - start.time
+time.elapsed
 
 ####################### Joining partitions: final_model() #####################
 
 args(final_model)
+?final_model
+
+#Let's also measure how much time the code below will take 
+#Start the clock!
+start.time <- Sys.time()
 
 for (i in 1:length(data_list)) {
   sp <- species[i]
   final_model(species_name = sp,
+              models_dir = "./modelos/modelos_gualaxo",
+              algorithms = "svmk",
               consensus_level = 0.5,
-              models_dir = "./modelos/loop",
               which_models = c("raw_mean",
                                "bin_mean",
                                "bin_consensus"),
               uncertainty = TRUE,
+              png_final = TRUE,
               overwrite = TRUE)
 }
 
+#Stop the clock!
+end.time <- Sys.time()
 
+time.elapsed <- end.time - start.time
+time.elapsed
 
 ############################# ENSEMBLE ######################################
 args(ensemble_model)
