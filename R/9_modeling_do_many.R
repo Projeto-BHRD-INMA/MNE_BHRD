@@ -29,17 +29,15 @@ for (i in 1:length(data_list)) {
           predictors = clim.stack,
           models_dir = "./modelos/modelos_gualaxo",
           png_partitions = TRUE,
+          equalize = TRUE,
           bioclim = TRUE,
           brt = TRUE,
           mahal = TRUE,
           maxnet = TRUE,
-          maxent = FALSE,
           rf = TRUE,
           svmk = TRUE,
-          svme = FALSE,
-          glm = FALSE,
-          domain = FALSE,
-          equalize = TRUE,
+          glm = TRUE,
+          domain = TRUE,
           write_bin_cut = TRUE)
 }
 
