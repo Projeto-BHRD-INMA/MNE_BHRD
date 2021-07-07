@@ -61,6 +61,7 @@ for (i in 1:length(data_list)) {
   final_model(species_name = sp,
               models_dir = "./modelos/modelos_gualaxo",
               algorithms = "svmk",
+              mean_th_par = c("spec_sens"),
               consensus_level = 0.5,
               which_models = c("raw_mean",
                                "bin_mean",
