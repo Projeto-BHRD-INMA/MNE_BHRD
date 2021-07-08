@@ -32,13 +32,16 @@ for (i in 1:length(data_list)) {
           equalize = TRUE,
           bioclim = TRUE,
           brt = TRUE,
-          mahal = TRUE,
-          maxnet = TRUE,
-          rf = TRUE,
-          svmk = TRUE,
-          glm = TRUE,
           domain = TRUE,
-          write_bin_cut = TRUE)
+          glm = TRUE,
+          maxnet = TRUE,
+          mahal = TRUE,
+          svmk = TRUE,
+          rf = TRUE,
+          write_bin_cut = TRUE
+          #project_model = TRUE,
+          #proj_data_folder = "./data/raster/proj"
+          )
 }
 
 #Stop the clock!
@@ -60,7 +63,7 @@ for (i in 1:length(data_list)) {
   sp <- species[i]
   final_model(species_name = sp,
               models_dir = "./modelos/modelos_gualaxo",
-              algorithms = "svmk",
+              algorithms = NULL,
               mean_th_par = c("spec_sens"),
               consensus_level = 0.5,
               which_models = c("raw_mean",
@@ -68,7 +71,23 @@ for (i in 1:length(data_list)) {
                                "bin_consensus"),
               uncertainty = TRUE,
               png_final = TRUE,
-              overwrite = TRUE)
+              overwrite = TRUE
+              )
+  final_model(species_name = sp,
+              models_dir = "./modelos/modelos_gualaxo",
+              proj_dir = "future",
+              algorithms = NULL,
+              mean_th_par = c("spec_sens"),
+              consensus_level = 0.5,
+              which_models = c("raw_mean",
+                               "raw_mean_cut",
+                               "raw_mean_th",
+                               "bin_mean",
+                               "bin_consensus"),
+              uncertainty = TRUE,
+              png_final = TRUE,
+              overwrite = TRUE
+              )
 }
 
 #Stop the clock!

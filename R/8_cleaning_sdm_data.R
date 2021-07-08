@@ -136,15 +136,15 @@ for (i in 1:length(data_list)) {
                 cv_n = 1,
                 cv_partitions = 10,
                 buffer_type = "mean",
-                write_buffer = T,
-                png_sdmdata = T,
+                write_buffer = TRUE,
+                png_sdmdata = TRUE,
                 n_back = 10000,
-                clean_dupl = T,
-                clean_uni = T,
-                clean_nas = T,
-                geo_filt = T,
+                clean_dupl = TRUE,
+                clean_uni = TRUE,
+                clean_nas = TRUE,
+                geo_filt = TRUE,
                 geo_filt_dist = 0.1,
-                select_variables = F
+                select_variables = FALSE
 )
 }
 
