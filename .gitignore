@@ -3,6 +3,8 @@
 .RData
 .Ruserdata
 .zip
+.xls
+.xlsx
 
 #ignorar pasta
 data/raster
