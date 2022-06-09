@@ -5,7 +5,7 @@
 ###https://data-blog.gbif.org/post/downloading-long-species-lists-on-gbif/   ###
 ###                                                                          ###
 ###                Modified by Danielle Moreira                              ###
-###                         02 set 2022                                      ###
+###                         02 jun 2022                                      ###
 ###                                                                          ###
 ################################################################################
 
